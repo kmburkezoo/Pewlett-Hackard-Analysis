@@ -29,7 +29,7 @@ hire_date date
 salaries
 -
 emp_no int pk fk -< employees.emp_no
-salary int
+salary numeric
 from_date date
 to_date date
 
