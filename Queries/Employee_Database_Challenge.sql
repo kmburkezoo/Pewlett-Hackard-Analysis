@@ -32,6 +32,7 @@ order by
 	to_date desc
 ;
 
+
 select
 	title,
 	count(emp_no)
@@ -40,3 +41,29 @@ from unique_titles
 group by title
 order by 2 desc
 ;
+
+
+/*
+Deliverable 2
+*/
+select
+distinct on (e.emp_no) e.emp_no,
+	e.first_name,
+	e.last_name,
+	e.birth_date,
+	de.from_date,
+	t.to_date,
+	t.title
+into mentorship_eligibility
+from employees e
+	join dept_emp de
+		on e.emp_no = de.emp_no
+	join titles t
+		on e.emp_no = t.emp_no
+where e.birth_date between '1965-01-01' and '1965-12-31'
+	and de.to_date = '9999-01-01'
+order by 
+	e.emp_no,
+	t.to_date desc
+;
+
